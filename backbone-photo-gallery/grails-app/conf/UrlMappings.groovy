@@ -1,13 +1,20 @@
 class UrlMappings {
 
-	static mappings = {
-		"/$controller/$action?/$id?"{
-			constraints {
-				// apply constraints here
-			}
-		}
+    static mappings = {
 
-		"/"(view:"/index")
-		"500"(view:'/error')
-	}
+        "/profiles"(controller: 'profile', action: 'index', parseRequest: true)
+
+        "/profile/$id"(controller: "profile", parseRequest: true) {
+            action = [GET: "show", PUT: "update", DELETE: "delete", POST: "save"]
+        }
+
+        "/$controller/$action?/$id?" {
+            constraints {
+                // apply constraints here
+            }
+        }
+
+        "/"(view: "/index")
+        "500"(view: '/error')
+    }
 }
