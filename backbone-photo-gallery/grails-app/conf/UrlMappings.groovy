@@ -2,9 +2,9 @@ class UrlMappings {
 
     static mappings = {
 
-        "/profiles"(controller: 'profile', action: 'index', parseRequest: true)
+        "/profiles"(controller: 'profile', action: 'index', parseRequest: false)
 
-        "/profile/$id"(controller: "profile", parseRequest: true) {
+        "/profiles/$id"(controller: "profile", parseRequest: true) {
             action = [GET: "show", PUT: "update", DELETE: "delete", POST: "save"]
         }
 
