@@ -70,9 +70,11 @@ var AppRouter = Backbone.Router.extend({
     },
 
     profileDetails:function (id) {
-        this.profile = this.profileList.get(id);
-        this.profileView = new ProfileView({model:this.profile});
-        $('#profileDetailsContainer').html(this.profileView.render().el);
+        if (this.profileList !== undefined) {
+            this.profile = this.profileList.get(id);
+            this.profileView = new ProfileView({model:this.profile});
+            $('#profileDetailsContainer').html(this.profileView.render().el);
+        }
     }
 });
 
