@@ -35,26 +35,28 @@
                 <span class="icon-bar"></span>
             </a>
             <a class="brand" href="${request.contextPath}">Photo Gallery</a>
-            %{--<div class="nav-collapse">--}%
-            %{--<ul class="nav">--}%
-            %{--<li class="dropdown">--}%
-            %{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <b class="caret"></b></a>--}%
-            %{--<ul class="dropdown-menu">--}%
-            %{--<li><a href="${createLink(controller: 'campaign', action: 'listing')}">Campaign listing</a></li>--}%
-            %{--<li><a href="${createLink(controller: 'campaign', action: 'editor')}">Add campaign</a></li>--}%
-            %{--</ul>--}%
-            %{--</li>--}%
-            %{--</ul>--}%
-            %{--</div><!--/.nav-collapse -->--}%
-            %{--<div class="btn-group pull-right">--}%
-            %{--<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">--}%
-            %{--<i class="icon-user icon-white"></i> <sec:loggedInUserInfo field="username" />--}%
-            %{--<span class="caret"></span>--}%
-            %{--</a>--}%
-            %{--<ul class="dropdown-menu">--}%
-            %{--<li><a href="${createLink(controller: 'logout', action: 'index')}">Sign Out</a></li>--}%
-            %{--</ul>--}%
-            %{--</div>--}%
+
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="${createLink(controller: 'profile', action: 'index')}">Profiles</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        %{--<div class="btn-group pull-right">--}%
+        %{--<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">--}%
+        %{--<i class="icon-user icon-white"></i> <sec:loggedInUserInfo field="username" />--}%
+        %{--<span class="caret"></span>--}%
+        %{--</a>--}%
+        %{--<ul class="dropdown-menu">--}%
+        %{--<li><a href="${createLink(controller: 'logout', action: 'index')}">Sign Out</a></li>--}%
+        %{--</ul>--}%
+        %{--</div>--}%
         </div>
     </div>
 </div>

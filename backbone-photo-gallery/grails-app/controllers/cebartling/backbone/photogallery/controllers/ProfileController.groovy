@@ -6,6 +6,9 @@ import grails.converters.JSON
 class ProfileController {
 
     def index() {
+    }
+
+    def list() {
         log.info "Retrieving list of profiles..."
         def profiles = Profile.list()
         withFormat {
