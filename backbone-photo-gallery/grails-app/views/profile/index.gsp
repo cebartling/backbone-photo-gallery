@@ -13,11 +13,11 @@
 
 <h1>Profiles</h1>
 
-<div class="row span12">
+<div class="row well-large">
     <div id="toolbarContainer"></div>
 </div>
 
-<div class="row span12">
+<div class="row well-large">
     <div class="row-fluid">
         <div id="profilesContainer" class="span3"></div>
 
