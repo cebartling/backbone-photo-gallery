@@ -2,7 +2,6 @@
 /** /js/application/profile/index.js                                 **/
 /**********************************************************************/
 
-
 // Models
 window.Profile = Backbone.Model.extend();
 
@@ -43,6 +42,20 @@ window.ProfileListItemView = Backbone.View.extend({
 
 });
 
+window.ProfileToolbarView = Backbone.View.extend({
+
+    tagName:'div',
+
+    template:Handlebars.compile($('#tpl-profile-toolbar').html()),
+
+    render:function (eventName) {
+        var json = this.model.toJSON();
+        $(this.el).html(this.template(json));
+        return this;
+    }
+
+});
+
 window.ProfileView = Backbone.View.extend({
 
     template:Handlebars.compile($('#tpl-profile-details').html()),
@@ -65,8 +78,10 @@ var AppRouter = Backbone.Router.extend({
     list:function () {
         this.profileList = new ProfileCollection();
         this.profileListView = new ProfileListView({model:this.profileList});
+        this.profileToolbarView = new ProfileToolbarView({model:this.profileList});
         this.profileList.fetch();
         $('#profilesContainer').html(this.profileListView.render().el);
+        $('#toolbarContainer').html(this.profileToolbarView.render().el);
     },
 
     profileDetails:function (id) {
