@@ -46,12 +46,39 @@ window.ProfileToolbarView = Backbone.View.extend({
 
     tagName:'div',
 
+    events:{
+        'click .showButton':'show',
+        'click .editButton':'edit',
+        'click .addButton':'add',
+        'click .deleteButton':'delete'
+    },
+
     template:Handlebars.compile($('#tpl-profile-toolbar').html()),
 
     render:function (eventName) {
         var json = this.model.toJSON();
         $(this.el).html(this.template(json));
         return this;
+    },
+
+    show:function (e) {
+        alert('This is the show function.');
+        return false;
+    },
+
+    edit:function (e) {
+        alert('This is the edit function.');
+        return false;
+    },
+
+    add:function (e) {
+        alert('This is the add function.');
+        return false;
+    },
+
+    delete:function (e) {
+        alert('This is the delete function.');
+        return false;
     }
 
 });
