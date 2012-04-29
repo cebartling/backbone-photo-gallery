@@ -1,6 +1,6 @@
 <html>
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="unauthenticated_main"/>
     <r:require modules="core"/>
 </head>
 
@@ -10,8 +10,13 @@
 
     <h1>Photo Gallery</h1>
 
-    <div>
+    <div style="margin-top: 20px;">
         Example Grails application that demonstrates using Backbone.js for a rich client-side experience.
+        <br/>
+        <br/>
+        <br/>
+        <a href="${createLink(controller: 'profile', action: 'index')}"
+           class="btn btn-primary btn-large">Let's get started!</a>
     </div>
 </div>
 

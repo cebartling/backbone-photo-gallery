@@ -2,6 +2,8 @@ package cebartling.backbone.photogallery.domain
 
 class Role {
 
+    static final String AUTHORITY_USER = 'AUTHORITY_USER'
+
     String authority
 
     static mapping = {

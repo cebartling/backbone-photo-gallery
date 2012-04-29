@@ -2,9 +2,11 @@ package cebartling.backbone.photogallery.controllers
 
 import cebartling.backbone.photogallery.domain.Profile
 import grails.converters.JSON
+import grails.plugins.springsecurity.Secured
 
 class ProfileController {
 
+    @Secured(['ROLE_USER'])
     def index() {
     }
 

@@ -1,6 +1,7 @@
 <head>
-    <meta name='layout' content='main'/>
+    <meta name='layout' content='unauthenticated_main'/>
     <title><g:message code="springSecurity.denied.title"/></title>
+    <r:require modules="core"/>
 </head>
 
 <body>
