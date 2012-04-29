@@ -92,3 +92,8 @@ log4j = {
 
     info 'grails.app'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'cebartling.backbone.photogallery.domain.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'cebartling.backbone.photogallery.domain.UserRole'
+grails.plugins.springsecurity.authority.className = 'cebartling.backbone.photogallery.domain.Role'
