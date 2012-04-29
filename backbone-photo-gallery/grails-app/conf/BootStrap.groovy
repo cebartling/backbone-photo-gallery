@@ -1,17 +1,19 @@
 import cebartling.backbone.photogallery.domain.Profile
+import cebartling.backbone.photogallery.domain.User
 
 class BootStrap {
 
     def init = { servletContext ->
 
-        new Profile(username: 'cebartling', password: 'pw123', fullName: 'Christopher Bartling')
-                .save(validate: true, flush: true, failOnError: true)
+        User user = User.findByUsername('cebartling')
+        if (!user) {
+            user = new User(username: 'cebartling', password: 'pw123')
+            def profile = new Profile(username: 'cebartling', fullName: 'Christopher Bartling', user: user)
+            user.profile = profile
 
-        new Profile(username: 'krbartling', password: 'pw123', fullName: 'Kurt Bartling')
-                .save(validate: true, flush: true, failOnError: true)
+            user.save(validate: true, flush: true, failOnError: true)
+        }
 
-        new Profile(username: 'kabartling', password: 'pw123', fullName: 'Kari Bartling')
-                .save(validate: true, flush: true, failOnError: true)
 
     }
 

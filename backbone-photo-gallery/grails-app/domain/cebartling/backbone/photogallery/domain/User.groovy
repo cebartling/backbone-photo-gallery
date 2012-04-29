@@ -4,12 +4,17 @@ class User {
 
     transient springSecurityService
 
+    Profile profile
+    static hasOne = [profile: Profile]
+
     String username
     String password
     boolean enabled
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
+
+
 
     static constraints = {
         username blank: false, unique: true
