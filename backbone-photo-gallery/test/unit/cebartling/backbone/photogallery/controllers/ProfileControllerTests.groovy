@@ -1,6 +1,7 @@
 package cebartling.backbone.photogallery.controllers
 
 import grails.test.mixin.TestFor
+import org.junit.Test
 
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
@@ -8,7 +9,8 @@ import grails.test.mixin.TestFor
 @TestFor(ProfileController)
 class ProfileControllerTests {
 
-    void testSomething() {
+    @Test
+    void list() {
         fail "Implement me"
     }
 }
