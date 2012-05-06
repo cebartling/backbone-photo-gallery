@@ -4,10 +4,17 @@ import cebartling.backbone.photogallery.domain.Profile
 import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 
+@Secured(['ROLE_USER'])
 class ProfileController {
 
-    @Secured(['ROLE_USER'])
+    static defaultAction = "index"
+
+    def springSecurityService
+
     def index() {
+        def user = springSecurityService.currentUser
+        def profile = Profile.findByUser(user)
+        render view: 'index', model: [profile: profile]
     }
 
     def list() {

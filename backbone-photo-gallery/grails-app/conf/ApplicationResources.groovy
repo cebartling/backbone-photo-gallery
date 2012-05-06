@@ -8,8 +8,14 @@ modules = {
         resource url: '/js/vendor/handlebars-1.0.0.beta.6.js'
     }
 
+    applicationBackbone {
+        resource url: '/js/application/backbone/models.js'
+        resource url: '/js/application/backbone/views.js'
+    }
+
     profile {
         dependsOn 'core'
+        dependsOn 'applicationBackbone'
         resource url: '/js/application/profile/index.js'
     }
 

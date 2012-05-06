@@ -15,7 +15,7 @@
         <br/>
         <br/>
         <br/>
-        <a href="${createLink(controller: 'profile', action: 'index')}"
+        <a href="${createLink(controller: 'profile')}"
            class="btn btn-primary btn-large">Let's get started!</a>
     </div>
 </div>
