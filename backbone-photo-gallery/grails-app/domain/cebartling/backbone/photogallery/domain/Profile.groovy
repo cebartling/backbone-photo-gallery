@@ -5,6 +5,9 @@ class Profile {
     User user
     static belongsTo = [user: User]
 
+    List<Album> albums
+    static hasMany = [albums: Album]
+
     String username
     String fullName
 

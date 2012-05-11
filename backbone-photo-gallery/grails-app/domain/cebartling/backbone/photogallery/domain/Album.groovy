@@ -4,9 +4,6 @@ class Album {
 
     static belongsTo = [profile: Profile]
 
-    List<Album> albums
-    static hasMany = [albums: Album]
-
     String name
     Date dateCreated
 

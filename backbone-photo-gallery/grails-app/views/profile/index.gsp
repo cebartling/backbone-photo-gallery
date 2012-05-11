@@ -9,12 +9,15 @@
     <r:require modules="profile"/>
 
     <g:render template="profileDetailTemplate"/>
+    <g:render template="../album/albumListingTemplate"/>
 
 </head>
 
 <body>
 
 <div id="profileContent"></div>
+
+<div id="albumListingContent"></div>
 
 </body>
 </html>

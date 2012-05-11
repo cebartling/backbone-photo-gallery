@@ -2,6 +2,12 @@ class UrlMappings {
 
     static mappings = {
 
+        "/profiles/$profileId/albums"(controller: "album", action: 'list', parseRequest: true)
+
+
+        "/profiles/$profileId/albums/$albumId"(controller: "album", parseRequest: true) {
+            action = [GET: "show", PUT: "update", DELETE: "delete", POST: "save"]
+        }
 
         "/profiles/$id"(controller: "profile", parseRequest: true) {
             action = [GET: "show", PUT: "update", DELETE: "delete", POST: "save"]

@@ -9,6 +9,21 @@ window.ProfileCollection = Backbone.Collection.extend({
     url:"/profiles"
 });
 
+window.Album = Backbone.Model.extend({});
+
+window.AlbumCollection = Backbone.Collection.extend({
+
+    model:Album,
+
+    initialize:function (props) {
+        this.profileId = props.profileId;
+    },
+
+    url:function () {
+        return '/profiles/' + this.profileId + '/albums';
+    }
+});
+
 
 
 

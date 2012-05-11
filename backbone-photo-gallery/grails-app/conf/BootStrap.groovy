@@ -1,7 +1,4 @@
-import cebartling.backbone.photogallery.domain.Profile
-import cebartling.backbone.photogallery.domain.Role
-import cebartling.backbone.photogallery.domain.User
-import cebartling.backbone.photogallery.domain.UserRole
+import cebartling.backbone.photogallery.domain.*
 
 class BootStrap {
 
@@ -21,12 +18,27 @@ class BootStrap {
             user.profile = profile
             user.save(validate: true, flush: true, failOnError: true)
             new UserRole(user: user, role: role).save(validate: true, flush: true, failOnError: true)
+
+            createAlbums(profile)
         }
 
 
     }
 
+    def createAlbums(Profile profile) {
+        profile.addToAlbums(new Album(profile: profile, name: 'Album 1', dateCreated: new Date()))
+        profile.addToAlbums(new Album(profile: profile, name: 'Album 2', dateCreated: new Date()))
+        profile.addToAlbums(new Album(profile: profile, name: 'Album 3', dateCreated: new Date()))
+    }
+
     def destroy = {
+        def username = 'cebartling'
+        User user = User.findByUsername(username)
+        if (user) {
+            user.profile.delete()
+            user.delete()
+        }
+
     }
 
 }
