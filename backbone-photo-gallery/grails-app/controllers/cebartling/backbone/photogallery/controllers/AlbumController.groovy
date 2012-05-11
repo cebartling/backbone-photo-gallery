@@ -22,15 +22,6 @@ class AlbumController {
     }
 
     def show() {
-//        log.info "Retrieving profile by id: ${params.id}."
-//        def profile = Profile.get(params.id)
-//        withFormat {
-//            js {
-//                render([id: profile.id,
-//                        fullname: profile.fullName,
-//                        username: profile.username] as JSON)
-//            }
-//        }
     }
 
     def update() {

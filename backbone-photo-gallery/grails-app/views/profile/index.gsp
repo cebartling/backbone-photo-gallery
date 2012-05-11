@@ -9,6 +9,7 @@
     <r:require modules="profile"/>
 
     <g:render template="profileDetailTemplate"/>
+    <g:render template="../album/albumTemplate"/>
     <g:render template="../album/albumListingTemplate"/>
 
 </head>

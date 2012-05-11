@@ -1,7 +1,5 @@
 window.ProfileView = Backbone.View.extend({
 
-    el:'#profileContent',
-
     template:Handlebars.compile($('#tpl-profile-details').html()),
 
     initialize:function () {
@@ -16,20 +14,39 @@ window.ProfileView = Backbone.View.extend({
 });
 
 
-window.AlbumListingView = Backbone.View.extend({
+window.AlbumView = Backbone.View.extend({
 
-    template:Handlebars.compile($('#tpl-album-listing').html()),
+    tagName:'div',
+
+    className:'well span10',
+
+    template:Handlebars.compile($('#tpl-album').html()),
 
     initialize:function () {
-        this.collection.on("reset", this.render, this);
     },
 
-    render:function (eventName) {
-        var collectionJSON = this.collection.toJSON();
-        $(this.el).html(this.template(collectionJSON));
+    render:function () {
+        $(this.el).html(this.template(this.model.toJSON()));
         return this;
     }
 
 });
 
+
+window.AlbumListingView = Backbone.View.extend({
+
+    initialize:function () {
+        this.collection.on("reset", this.render, this);
+    },
+
+    render:function () {
+        var self = this;
+        _(this.collection.models).each(function (albumModel) {
+            var albumView = new AlbumView({model:albumModel});
+            $(self.el).append(albumView.render().el)
+        });
+        return this;
+    }
+
+});
 
