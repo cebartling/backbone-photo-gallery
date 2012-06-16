@@ -24,6 +24,20 @@ window.AlbumCollection = Backbone.Collection.extend({
     }
 });
 
+window.Photo = Backbone.Model.extend({});
 
+window.PhotoCollection = Backbone.Collection.extend({
+
+    model:Photo,
+
+    initialize:function (props) {
+        this.profileId = props.profileId;
+        this.albumId = props.albumId;
+    },
+
+    url:function () {
+        return '/profiles/' + this.profileId + '/albums/' + this.albumId + '/photos';
+    }
+});
 
 
