@@ -1,43 +1,47 @@
-window.Profile = Backbone.Model.extend({
-    url:function () {
-        return this.id ? '/profiles/' + this.id : '/profiles';
-    }
-});
+(function () {
 
-window.ProfileCollection = Backbone.Collection.extend({
-    model:Profile,
-    url:"/profiles"
-});
+    window.Profile = Backbone.Model.extend({
+        url:function () {
+            return this.id ? '/profiles/' + this.id : '/profiles';
+        }
+    });
 
-window.Album = Backbone.Model.extend({});
+    window.ProfileCollection = Backbone.Collection.extend({
+        model:Profile,
+        url:"/profiles"
+    });
 
-window.AlbumCollection = Backbone.Collection.extend({
+    window.Album = Backbone.Model.extend({});
 
-    model:Album,
+    window.AlbumCollection = Backbone.Collection.extend({
 
-    initialize:function (props) {
-        this.profileId = props.profileId;
-    },
+        model:Album,
 
-    url:function () {
-        return '/profiles/' + this.profileId + '/albums';
-    }
-});
+        initialize:function (props) {
+            this.profileId = props.profileId;
+        },
 
-window.Photo = Backbone.Model.extend({});
+        url:function () {
+            return '/profiles/' + this.profileId + '/albums';
+        }
+    });
 
-window.PhotoCollection = Backbone.Collection.extend({
+    window.Photo = Backbone.Model.extend({});
 
-    model:Photo,
+    window.PhotoCollection = Backbone.Collection.extend({
 
-    initialize:function (props) {
-        this.profileId = props.profileId;
-        this.albumId = props.albumId;
-    },
+        model:Photo,
 
-    url:function () {
-        return '/profiles/' + this.profileId + '/albums/' + this.albumId + '/photos';
-    }
-});
+        initialize:function (props) {
+            this.profileId = props.profileId;
+            this.albumId = props.albumId;
+        },
+
+        url:function () {
+            return '/profiles/' + this.profileId + '/albums/' + this.albumId + '/photos';
+        }
+    });
+
+}).call(this);
 
 
