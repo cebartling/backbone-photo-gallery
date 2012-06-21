@@ -26,9 +26,12 @@ class BootStrap {
     }
 
     def createAlbums(Profile profile) {
-        profile.addToAlbums(new Album(profile: profile, name: 'Album 1', dateCreated: new Date()))
-        profile.addToAlbums(new Album(profile: profile, name: 'Album 2', dateCreated: new Date()))
-        profile.addToAlbums(new Album(profile: profile, name: 'Album 3', dateCreated: new Date()))
+        def album = new Album(profile: profile, name: 'Album 1', dateCreated: new Date())
+        profile.addToAlbums(album)
+        album = new Album(profile: profile, name: 'Album 2', dateCreated: new Date())
+        profile.addToAlbums(album)
+        album = new Album(profile: profile, name: 'Album 3', dateCreated: new Date())
+        profile.addToAlbums(album)
     }
 
     def destroy = {
