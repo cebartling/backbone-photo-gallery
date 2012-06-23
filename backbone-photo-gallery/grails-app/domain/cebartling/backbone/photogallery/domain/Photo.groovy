@@ -6,13 +6,13 @@ class Photo {
 
     String name
     String caption
-    byte[] imageData
+//    byte[] imageData
     Date dateCreated
 
     static constraints = {
         name(blank: false, nullable: false, maxSize: 80)
         caption(blank: true, nullable: true, maxSize: 4096)
-        imageData(nullable: false, maxSize: 4000000)
+//        imageData(nullable: false, maxSize: 4000000)
         dateCreated(nullable: false)
     }
 }

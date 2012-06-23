@@ -27,11 +27,21 @@ class BootStrap {
 
     def createAlbums(Profile profile) {
         def album = new Album(profile: profile, name: 'Album 1', dateCreated: new Date())
+        createPhotos(album)
         profile.addToAlbums(album)
         album = new Album(profile: profile, name: 'Album 2', dateCreated: new Date())
+        createPhotos(album)
         profile.addToAlbums(album)
         album = new Album(profile: profile, name: 'Album 3', dateCreated: new Date())
+        createPhotos(album)
         profile.addToAlbums(album)
+    }
+
+    void createPhotos(Album album) {
+        album.addToPhotos(new Photo(name: 'Photo 1', caption: 'Something kinda funny...', dateCreated: new Date()))
+        album.addToPhotos(new Photo(name: 'Photo 2', caption: 'Something kinda sad...', dateCreated: new Date()))
+        album.addToPhotos(new Photo(name: 'Photo 3', caption: 'Something kinda queer...', dateCreated: new Date()))
+        album.addToPhotos(new Photo(name: 'Photo 4', caption: 'Something kinda weird...', dateCreated: new Date()))
     }
 
     def destroy = {
