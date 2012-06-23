@@ -15,7 +15,7 @@ class ImageDataController {
         final InputStream is = new BufferedInputStream(new FileInputStream(imageFile))
         final byte[] imageData = IOUtils.toByteArray(is)
         def image = ImageUtils.createImage(imageData)
-        BufferedImage scaledImage = ImageUtils.resizeImage(image, new BigDecimal('.2'), true)
+        BufferedImage scaledImage = ImageUtils.resizeImage(image, new BigDecimal('.5'), true)
         response.setContentType("media/jpg")
         response.setContentLength(imageData.length)
         OutputStream out = response.getOutputStream()
