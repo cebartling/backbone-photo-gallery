@@ -14,16 +14,17 @@ class ImageDataController {
         final File imageFile = new File(imageFilePath)
         final InputStream is = new BufferedInputStream(new FileInputStream(imageFile))
         final byte[] imageData = IOUtils.toByteArray(is)
-        def image = ImageUtils.createImage(imageData)
-        BufferedImage scaledImage = ImageUtils.resizeImage(image, new BigDecimal('.5'), true)
+        def image = ImageUtils.createBufferedImage(imageData)
+        BufferedImage scaledImage = ImageUtils.scaleImage(image, new BigDecimal('.2'))
         response.setContentType("media/jpg")
-        response.setContentLength(imageData.length)
         OutputStream out = response.getOutputStream()
-//        out.write(imageData)
-        ImageIO.write(scaledImage, 'jpg', out)
-        out.flush()
-        out.close()
-        return null
+        try {
+            ImageIO.write(scaledImage, 'jpg', out)
+        } finally {
+            out.flush()
+            out.close()
+        }
+        null
     }
 
 

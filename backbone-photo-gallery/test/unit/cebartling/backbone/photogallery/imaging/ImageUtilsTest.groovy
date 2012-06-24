@@ -18,16 +18,6 @@ class ImageUtilsTest {
     }
 
     @Test
-    void resizeImage_WidthAndHeightSpecified() {
-
-    }
-
-    @Test
-    void resizeImage_ScalingPercentageSpecified() {
-
-    }
-
-    @Test
     void createImage() {
         def image = ImageUtils.createImage(imageData)
         assert image
@@ -35,5 +25,23 @@ class ImageUtilsTest {
         assert pixelGrabber.grabPixels()
         assert 552 == pixelGrabber.getWidth()
         assert 736 == pixelGrabber.getHeight()
+    }
+
+    @Test
+    void createBufferedImage() {
+        def bufferedImage = ImageUtils.createBufferedImage(imageData)
+
+        assert bufferedImage
+        assert 552 == bufferedImage.width
+        assert 736 == bufferedImage.height
+    }
+
+    @Test
+    void scaleImage() {
+        def scaledImage = ImageUtils.scaleImage(ImageUtils.createBufferedImage(imageData), new BigDecimal('0.5'))
+
+        assert scaledImage
+        assert 276 == scaledImage.width
+        assert 368 == scaledImage.height
     }
 }

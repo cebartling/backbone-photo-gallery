@@ -1,68 +1,28 @@
 package cebartling.backbone.photogallery.imaging
 
+import com.mortennobel.imagescaling.ResampleOp
 import org.apache.log4j.Logger
 
-import java.awt.AlphaComposite
-import java.awt.Graphics2D
 import java.awt.Image
 import java.awt.Toolkit
 import java.awt.image.BufferedImage
-import java.awt.image.PixelGrabber
+import javax.imageio.ImageIO
 
 class ImageUtils {
 
     private static final Logger log = Logger.getLogger(ImageUtils)
 
-    /**
-     * Create a scaled BufferedImage from an original image.
-     *
-     * @param originalImage
-     * @param scaledWidth
-     * @param scaledHeight
-     * @param preserveAlpha
-     * @return
-     */
-    static BufferedImage resizeImage(Image originalImage,
-                                     int scaledWidth,
-                                     int scaledHeight,
-                                     boolean preserveAlpha) {
-        int imageType = preserveAlpha ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB
-        BufferedImage scaledBufferedImage = new BufferedImage(scaledWidth, scaledHeight, imageType)
-        Graphics2D graphics2DContext = scaledBufferedImage.createGraphics()
-        if (preserveAlpha) {
-            graphics2DContext.setComposite(AlphaComposite.Src)
-        }
-        graphics2DContext.drawImage(originalImage, 0, 0, scaledWidth, scaledHeight, null)
-        graphics2DContext.dispose()
-        scaledBufferedImage
-    }
 
-    /**
-     * Create a scaled BufferedImage from an original image.
-     *
-     * @param originalImage
-     * @param scalingPercentage A scaling percentage as a BigDecimal.
-     * @param preserveAlpha
-     * @return
-     */
-    static BufferedImage resizeImage(Image originalImage, BigDecimal scalingPercentage, boolean preserveAlpha) {
-        int imageType = preserveAlpha ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB
-        PixelGrabber grabber = new PixelGrabber(originalImage, 0, 0, -1, -1, false)
-        grabber.grabPixels()
-        log.debug "Image original size: Height: ${grabber.getHeight()} pixels, Width: ${grabber.getWidth()} pixels."
 
-        int scaledWidth = scalingPercentage.multiply(new BigDecimal(grabber.getWidth())).intValue()
-        int scaledHeight = scalingPercentage.multiply(new BigDecimal(grabber.getHeight())).intValue()
+    static BufferedImage scaleImage(BufferedImage originalImage, BigDecimal scalingPercentage) {
+        log.debug "Image original size: Height: ${originalImage.height} pixels, Width: ${originalImage.width} pixels."
+
+        int scaledWidth = scalingPercentage.multiply(new BigDecimal(originalImage.width)).intValue()
+        int scaledHeight = scalingPercentage.multiply(new BigDecimal(originalImage.height)).intValue()
         log.debug "Image scaled size: Height: ${scaledHeight} pixels, Width: ${scaledWidth} pixels."
 
-        BufferedImage scaledBufferedImage = new BufferedImage(scaledWidth, scaledHeight, imageType)
-        Graphics2D graphics2DContext = scaledBufferedImage.createGraphics()
-        if (preserveAlpha) {
-            graphics2DContext.setComposite(AlphaComposite.Src)
-        }
-        graphics2DContext.drawImage(originalImage, 0, 0, scaledWidth, scaledHeight, null)
-        graphics2DContext.dispose()
-        scaledBufferedImage
+        ResampleOp resampleOp = new ResampleOp(scaledWidth, scaledHeight)
+        return resampleOp.filter(originalImage, null)
     }
 
     /**
@@ -70,6 +30,17 @@ class ImageUtils {
      */
     static Image createImage(byte[] rawImageData) {
         Toolkit.getDefaultToolkit().createImage(rawImageData)
+    }
+
+    /**
+     * Create a java.awt.image.BufferedImage from a raw byte array.
+     *
+     * @param rawImageData A byte array representing an image.
+     * @return A java.awt.image.BufferedImage instance representing the image contained in the
+     * raw image data byte array passed in.
+     */
+    static BufferedImage createBufferedImage(byte[] rawImageData) {
+        ImageIO.read(new ByteArrayInputStream(rawImageData))
     }
 
 
