@@ -54,6 +54,7 @@
     window.PhotoView = Backbone.View.extend({
 
         tagName:'div',
+        className:'photo',
 
         template:Handlebars.compile($('#tpl-photo').html()),
 

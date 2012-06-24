@@ -6,6 +6,7 @@ modules = {
         resource url: '/js/vendor/backbone.js'
         resource url: '/js/vendor/json2.js'
         resource url: '/js/vendor/handlebars-1.0.0.beta.6.js'
+        resource url: 'css/extras.css'
     }
 
     applicationBackbone {

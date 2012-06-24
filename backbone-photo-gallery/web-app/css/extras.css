@@ -1,0 +1,9 @@
+.photo {
+    float: left;
+    padding: 5px;
+    margin: 10px;
+    border: rgb(215, 212, 216) solid thin;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
