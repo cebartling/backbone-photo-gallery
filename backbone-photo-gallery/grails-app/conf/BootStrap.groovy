@@ -1,3 +1,4 @@
+import org.apache.commons.io.IOUtils
 import cebartling.backbone.photogallery.domain.*
 
 class BootStrap {
@@ -38,10 +39,17 @@ class BootStrap {
     }
 
     void createPhotos(Album album) {
-        album.addToPhotos(new Photo(name: 'Photo 1', caption: 'Something kinda funny...', dateCreated: new Date()))
-        album.addToPhotos(new Photo(name: 'Photo 2', caption: 'Something kinda sad...', dateCreated: new Date()))
-        album.addToPhotos(new Photo(name: 'Photo 3', caption: 'Something kinda queer...', dateCreated: new Date()))
-        album.addToPhotos(new Photo(name: 'Photo 4', caption: 'Something kinda weird...', dateCreated: new Date()))
+        InputStream is = Thread.currentThread().contextClassLoader.getResourceAsStream('cebartling/backbone/photogallery/imaging/test1.JPG')
+        def imageData = IOUtils.toByteArray(is)
+        album.addToPhotos(new Photo(name: 'Photo 1', caption: 'Cooper', dateCreated: new Date(), imageData: imageData))
+
+        is = Thread.currentThread().contextClassLoader.getResourceAsStream('cebartling/backbone/photogallery/imaging/test2.JPG')
+        imageData = IOUtils.toByteArray(is)
+        album.addToPhotos(new Photo(name: 'Photo 2', caption: 'Cooper and his kennel', dateCreated: new Date(), imageData: imageData))
+
+        is = Thread.currentThread().contextClassLoader.getResourceAsStream('cebartling/backbone/photogallery/imaging/test3.JPG')
+        imageData = IOUtils.toByteArray(is)
+        album.addToPhotos(new Photo(name: 'Photo 3', caption: 'Another of Cooper and his kennel', dateCreated: new Date(), imageData: imageData))
     }
 
     def destroy = {
