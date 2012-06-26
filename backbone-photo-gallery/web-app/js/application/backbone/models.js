@@ -85,6 +85,9 @@
         }
     });
 
+    window.UploadPhotosModel = Backbone.Model.extend({});
+
+
 }).call(this);
 
 

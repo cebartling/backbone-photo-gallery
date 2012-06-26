@@ -11,6 +11,7 @@
     <g:render template="profileDetailTemplate"/>
     <g:render template="../album/albumTemplate"/>
     <g:render template="../album/albumListingTemplate"/>
+    <g:render template="../album/uploadPhotosDialog"/>
     <g:render template="../photo/photoTemplate"/>
 
 </head>

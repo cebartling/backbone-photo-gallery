@@ -11,7 +11,7 @@ class ImageDataController {
 
     def retrieve() {
         def photo = Photo.get(params.id)
-        if (photo) {
+        if (photo && photo.imageData) {
             def image = ImageUtils.createBufferedImage(photo.imageData)
             BufferedImage scaledImage = ImageUtils.scaleImage(image, new BigDecimal('.2'))
             response.setContentType("media/jpg")

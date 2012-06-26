@@ -20,6 +20,9 @@
 
         tagName:'div',
         className:'well span10',
+        events:{
+            'click .uploadPhotosButton':'uploadPhotos'
+        },
 
         template:Handlebars.compile($('#tpl-album').html()),
 
@@ -29,6 +32,10 @@
         render:function () {
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
+        },
+
+        uploadPhotos:function (ev) {
+            alert('Clicked upload photos for album: ' + this.model.id)
         }
 
     });
@@ -82,6 +89,23 @@
             });
             return this;
         }
+
+    });
+
+    window.UploadPhotosDialog = Backbone.View.extend({
+
+        tagName:'div',
+
+        template:Handlebars.compile($('#tpl-upload-photo-dialog').html()),
+
+        initialize:function () {
+        },
+
+        render:function () {
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
+        }
+
     });
 
 }).call(this);
