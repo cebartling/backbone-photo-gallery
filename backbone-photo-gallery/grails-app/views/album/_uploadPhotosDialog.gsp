@@ -1,14 +1,14 @@
 <script type="text/template" id="tpl-upload-photos-dialog">
 
-    <div class="modal hide" id="uploadPhotoDialog">
+    <div class="modal hide fade" id="uploadPhotoDialog-{{ id }}">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">×</button>
 
-            <h3>Modal header</h3>
+            <h3>Upload photos to album: {{ id }}</h3>
         </div>
 
         <div class="modal-body">
-            <p>One fine body…</p>
+            <p>something will be here soon.</p>
         </div>
 
         <div class="modal-footer">

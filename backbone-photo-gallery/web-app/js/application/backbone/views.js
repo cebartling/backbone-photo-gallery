@@ -27,15 +27,21 @@
         template:Handlebars.compile($('#tpl-album').html()),
 
         initialize:function () {
+            this.uploadPhotosModel = new UploadPhotosModel({id:this.model.id});
+            this.uploadPhotosDialog = new UploadPhotosDialog({model:this.uploadPhotosModel});
         },
 
         render:function () {
-            $(this.el).html(this.template(this.model.toJSON()));
+            $(this.el).html('');
+            $(this.el).append(this.template(this.model.toJSON()));
+            $(this.el).append(this.uploadPhotosDialog.render().el)
             return this;
         },
 
         uploadPhotos:function (ev) {
-            alert('Clicked upload photos for album: ' + this.model.id)
+            $('#uploadPhotoDialog-' + this.model.id).modal({
+                keyboard:false
+            });
         }
 
     });
@@ -96,7 +102,7 @@
 
         tagName:'div',
 
-        template:Handlebars.compile($('#tpl-upload-photo-dialog').html()),
+        template:Handlebars.compile($('#tpl-upload-photos-dialog').html()),
 
         initialize:function () {
         },
